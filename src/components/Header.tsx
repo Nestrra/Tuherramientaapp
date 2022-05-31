@@ -4,8 +4,18 @@ import React, { useState } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { Header as HeaderRNE, Input } from "@rneui/themed";
 import { Icon } from '@rneui/base';
+import { StackScreenProps } from '@react-navigation/stack';
 
-const Header = () => {
+interface Props extends StackScreenProps<any, any> { 
+
+    title?:string;
+    iconTitle?: JSX.Element;
+    iconTitleRigth?:JSX.Element;
+    cartIcon?:JSX.Element;
+
+}
+
+const Header = ({navigation, title, iconTitle, iconTitleRigth, cartIcon}:Props) => {
 
 
     const [input, setInput] = useState<string>('');
@@ -28,9 +38,9 @@ const Header = () => {
 
                     <TouchableOpacity
                         style={{ marginTop: 1 }}
-                        onPress={() => console.log('Hola')}
+                        onPress={() => navigation.navigate('TopTabNavigation')}
                     >
-                        <Icon type="ionicon" name="cart-outline" color="black" size={28} />
+                       {cartIcon}
                     </TouchableOpacity>
 
                 }
@@ -67,9 +77,9 @@ const Header = () => {
                             style={{ flexDirection: 'row', marginLeft: -30, marginTop: -10, alignItems: 'center' }}
                             onPress={() => console.log('ir a direcciones')}
                         >
-                            <Icon type="ionicon" name="location-outline" color="black" size={16} />
-                            <Text style={{ fontSize: 13 }} >Enviar a Nestor Raul Camacho - Carrera 31 No. 13-41</Text>
-                            <Icon style={{ marginLeft: 3 }} type="ionicon" name="chevron-forward-outline" color="grey" size={16} />
+                            {iconTitle}
+                            <Text style={{ fontSize: 13 }} >{title}</Text>
+                           {iconTitleRigth}
 
                         </TouchableOpacity>
 
