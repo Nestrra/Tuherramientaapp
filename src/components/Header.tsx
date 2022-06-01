@@ -4,9 +4,9 @@ import React, { useState } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { Header as HeaderRNE, Input } from "@rneui/themed";
 import { Icon } from '@rneui/base';
-import { StackScreenProps } from '@react-navigation/stack';
+import { DrawerScreenProps } from '@react-navigation/drawer';
 
-interface Props extends StackScreenProps<any, any> { 
+interface Props extends DrawerScreenProps<any, any> { 
 
     title?:string;
     iconTitle?: JSX.Element;
@@ -29,7 +29,7 @@ const Header = ({navigation, title, iconTitle, iconTitleRigth, cartIcon}:Props) 
                 leftComponent={
                     <TouchableOpacity
 
-                        onPress={() => console.log('Hola')}
+                        onPress={() => navigation.toggleDrawer()}
                     >
                         <Icon type="ionicon" name="menu-outline" color="black" size={33} />
                     </TouchableOpacity>

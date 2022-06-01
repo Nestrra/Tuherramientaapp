@@ -1,11 +1,12 @@
 
 
-import { StackScreenProps } from '@react-navigation/stack'
+import { DrawerScreenProps } from '@react-navigation/drawer'
+
 import React from 'react'
 import { Text, View } from 'react-native'
 
 
-interface Props extends StackScreenProps<any, any> { }
+interface Props extends DrawerScreenProps<any, any> { }
 
 const CartScreen = ({navigation, route}:Props) => {
   return (

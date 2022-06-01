@@ -4,14 +4,17 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import CartScreen from '../screens/cart/CartScreen';
 import FavoritesScreen from '../screens/cart/FavoritesScreen';
 import Header from '../components/Header';
+import { DrawerScreenProps } from '@react-navigation/drawer';
+
+interface Props extends DrawerScreenProps<any, any> { }
 
 const Tab = createMaterialTopTabNavigator();
 
-export const TopTabNavigation=()=> {
+export const TopTabNavigation=({navigation, route}:Props)=> {
   return (
 
     <>
-        <Header   />       
+        <Header navigation={navigation} route={route}    />       
      <Tab.Navigator
             screenOptions={{
                 tabBarStyle: { backgroundColor: '#F9D923' },
